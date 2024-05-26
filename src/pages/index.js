@@ -1,128 +1,130 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-
+import React from "react"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
+import Header from "../components/header"
+import { Link, graphql } from "gatsby"
+import Skills from "../components/skills"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-  },
-  {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
-    description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-  },
-]
+const pageStyles = {
+  color: "#564154",
+  fontFamily: "'Cormorant Garamond', serif",
+  marginTop: "20px",
+  marginBottom: "50px",
+}
 
-const samplePageLinks = [
-  {
-    text: "Page 2",
-    url: "page-2",
-    badge: false,
-    description:
-      "A simple example of linking to another page within a Gatsby site",
-  },
-  { text: "TypeScript", url: "using-typescript" },
-  { text: "Server Side Rendering", url: "using-ssr" },
-  { text: "Deferred Static Generation", url: "using-dsg" },
-]
+const projectsWrapperStyles = {
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "center",
+  gap: "20px",
+}
 
-const moreLinks = [
-  { text: "Join us on Discord", url: "https://gatsby.dev/discord" },
-  {
-    text: "Documentation",
-    url: "https://gatsbyjs.com/docs/",
-  },
-  {
-    text: "Starters",
-    url: "https://gatsbyjs.com/starters/",
-  },
-  {
-    text: "Showcase",
-    url: "https://gatsbyjs.com/showcase/",
-  },
-  {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
-  },
-  { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
-]
+const projectContainerStyles = {
+  width: "350px",
+  boxSizing: "border-box",
+  textAlign: "center",
+  marginRight: "20px",
+  padding: "20px",
+  border: "1px solid #ddd",
+  borderRadius: "10px",
+  backgroundColor: "#f8f8f8",
+  transition: "transform 0.3s ease",
+}
 
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
+const imageWrapperStyles = {
+  borderRadius: "5px",
+  overflow: "hidden",
+  height: "200px",
+}
 
-const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
-      />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
-        ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
-    </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
-      ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))}
-  </Layout>
-)
+const imageStyles = {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  display: "block",
+}
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="Home" />
+const linkStyles = {
+  color: "#FF5733",
+  fontSize: "2rem",
+  textDecoration: "none",
+  transition: "font-size 0.3s ease",
+}
+
+const IndexPage = ({ data }) => {
+  const projects = data.allContentfulProjekt.nodes || []
+
+  return (
+    <Layout>
+      <main style={pageStyles}>
+        <Header />
+        <Skills />
+        <h2
+          style={{
+            fontSize: "2.5rem",
+            marginBottom: "2rem",
+            textAlign: "center",
+          }}
+        >
+          Projects
+        </h2>
+        <div style={projectsWrapperStyles}>
+          {projects.slice(0, 3).map(project => (
+            <div
+              key={project.id}
+              style={projectContainerStyles}
+              className="project-container"
+            >
+              <Link to={`/projekt/${project.slug}`}>
+                <div style={imageWrapperStyles}>
+                  {project.image && (
+                    <GatsbyImage
+                      image={project.image.gatsbyImageData}
+                      alt={project.titel || "Project Image"}
+                      style={imageStyles}
+                    />
+                  )}
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          <Link to="/projekt" style={linkStyles} className="project-link">
+            View All Projects ➔
+          </Link>
+        </div>
+      </main>
+      <style>
+        {`
+          .project-container:hover {
+            transform: scale(1.05);
+          }
+
+          @media (max-width: 768px) {
+            .project-link {
+              font-size: 1rem !important;
+            }
+          }
+        `}
+      </style>
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query {
+    allContentfulProjekt {
+      nodes {
+        id
+        titel
+        slug
+        image {
+          gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage

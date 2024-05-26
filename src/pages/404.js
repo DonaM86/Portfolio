@@ -1,15 +1,61 @@
+// src/pages/404.js
+
 import * as React from "react"
-
+import styled from "styled-components"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import { Link, graphql, useStaticQuery } from "gatsby"
 
-const NotFoundPage = () => (
-  <Layout>
-    <h1>404: Not Found</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-)
+const Main = styled.main`
+  color: #333;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  text-align: center;
+`
 
-export const Head = () => <Seo title="404: Not Found" />
+const Heading = styled.h1`
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+`
+
+const Text = styled.p`
+  margin-bottom: 1rem;
+  font-size: 1rem;
+`
+
+const LinkStyled = styled(Link)`
+  color: #007acc;
+  text-decoration: none;
+  font-weight: bold;
+`
+
+const NotFoundPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      contentful404FelSida {
+        pagenotfound
+      }
+    }
+  `)
+
+  return (
+    <Layout pageTitle="Sidan kunde inte hittas">
+      <Main>
+        <Heading>Sidan kunde inte hittas</Heading>
+        <Text>
+          {data.contentful404FelSida.pagenotfound}
+          <br />
+          {process.env.NODE_ENV === "development" && (
+            <>
+              <br />
+              Gå tillbaka till <LinkStyled to="/">startsidan</LinkStyled>.
+              <br />
+            </>
+          )}
+        </Text>
+      </Main>
+    </Layout>
+  )
+}
 
 export default NotFoundPage
