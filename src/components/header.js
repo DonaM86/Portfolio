@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
@@ -46,7 +46,7 @@ const ContactButton = styled.button`
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   outline: none;
-  margin-top: 2rem;
+  margin-top: 2rem; /* Added margin to improve button placement */
 
   &:hover {
     background-color: #d63603;
@@ -59,8 +59,6 @@ const ContactButton = styled.button`
 `
 
 const Header = () => {
-  const [loading, setLoading] = useState(true)
-
   const data = useStaticQuery(graphql`
     query {
       allContentfulIntroduction {
@@ -82,24 +80,13 @@ const Header = () => {
   const introductionData = data.allContentfulIntroduction.nodes[0]
   const image = getImage(introductionData.image)
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false)
-    }, 1000)
-
-    return () => clearTimeout(timeout)
-  }, [])
-
-  if (loading) {
-    return <div>Loading...</div>
-  }
-
   return (
     <HeaderWrapper>
       <Container>
         <FlexContainer>
           <div style={{ width: "180px" }}>
             {" "}
+            {/* Adjusted width */}
             <GatsbyImage
               style={{ borderRadius: "50%" }}
               image={image}
