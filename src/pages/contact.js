@@ -8,7 +8,6 @@ import "../styles/Contact.css"
 
 const Contact = ({ data }) => {
   const contactInfo = data.allContentfulContact.nodes[0]
-
   const image = getImage(contactInfo.profilbild)
 
   return (
@@ -77,8 +76,8 @@ export const query = graphql`
           title
           gatsbyImageData(
             layout: FIXED
-            width: 400
-            height: 400
+            width: 300
+            height: 300
             placeholder: BLURRED
           )
         }
