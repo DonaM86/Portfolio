@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
@@ -78,6 +78,10 @@ const Header = () => {
 
   const introductionData = data.allContentfulIntroduction.nodes[0]
   const image = getImage(introductionData.image)
+
+  useEffect(() => {
+    console.log("Header component mounted")
+  }, [])
 
   return (
     <HeaderWrapper>
