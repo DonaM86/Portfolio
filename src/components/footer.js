@@ -14,6 +14,7 @@ const FooterWrapper = styled.footer`
 const ContentContainer = styled.div`
   max-width: 1140px;
   margin: 0 auto;
+  padding: 0 1rem; /* Added padding for mobile */
 `
 
 const IconList = styled.ul`
@@ -22,6 +23,12 @@ const IconList = styled.ul`
   align-items: center;
   flex-wrap: wrap;
   margin-top: 1rem;
+  list-style: none; /* Added to remove default list styling */
+  padding: 0; /* Added to remove default padding */
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack icons vertically on smaller screens */
+  }
 `
 
 const IconItem = styled.li`
@@ -29,7 +36,7 @@ const IconItem = styled.li`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 1rem;
+  margin: 0.5rem; /* Changed to use margin for spacing */
 
   &:last-child {
     margin-right: 0;
@@ -40,6 +47,10 @@ const StyledIcon = styled.span`
   margin-bottom: 0.5rem;
   font-size: 24px;
   transition: color 0.3s ease;
+
+  @media (max-width: 768px) {
+    font-size: 20px; /* Smaller icon size on mobile */
+  }
 `
 
 const StyledLink = styled.a`
@@ -50,6 +61,10 @@ const StyledLink = styled.a`
   &:hover,
   &:focus {
     color: #c66216;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px; /* Smaller text size on mobile */
   }
 `
 

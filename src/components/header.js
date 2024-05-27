@@ -81,7 +81,9 @@ const Header = () => {
 
   useEffect(() => {
     console.log("Header component mounted")
-  }, [])
+    console.log("Introduction Data:", introductionData)
+    console.log("Image Data:", image)
+  }, [introductionData, image])
 
   return (
     <HeaderWrapper>

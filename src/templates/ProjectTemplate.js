@@ -25,7 +25,7 @@ const ProjectCard = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    max-width: 80%;
+    max-width: 90%; /* Adjusted for better mobile view */
     margin-left: auto;
     margin-right: auto;
   }
@@ -38,6 +38,10 @@ const TextSide = styled.div`
   padding: 40px;
   background-color: #dfe2d2;
   padding-bottom: 5%;
+
+  @media (max-width: 768px) {
+    padding: 20px; /* Adjusted padding for mobile */
+  }
 `
 
 const ContentContainer = styled.div`
@@ -49,15 +53,29 @@ const Title = styled.h2`
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 15px;
+
+  @media (max-width: 768px) {
+    font-size: 24px; /* Adjusted font size for mobile */
+  }
 `
 
 const Description = styled.div`
   font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 16px; /* Adjusted font size for mobile */
+  }
 `
 
 const ImageSide = styled.div`
   flex: 2;
   position: relative;
+  display: flex;
+  justify-content: center; /* Center image on mobile */
+
+  @media (max-width: 768px) {
+    margin-top: 20px; /* Space between text and image on mobile */
+  }
 `
 
 const StyledImage = styled(GatsbyImage)`
@@ -66,6 +84,11 @@ const StyledImage = styled(GatsbyImage)`
   object-fit: contain;
   border: 4px solid #351f39;
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    width: 100%; /* Full width on mobile */
+    height: auto;
+  }
 `
 
 const HoveredImage = styled(GatsbyImage)`
@@ -76,6 +99,11 @@ const HoveredImage = styled(GatsbyImage)`
   height: 105%;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
+
+  @media (max-width: 768px) {
+    height: auto;
+    width: 100%; /* Full width on mobile */
+  }
 `
 
 const ImageContainer = styled.div`
@@ -83,8 +111,15 @@ const ImageContainer = styled.div`
   background-color: #dfe2d2;
   width: 100%;
   height: 97%;
+  display: flex;
+  justify-content: center; /* Center the image container on mobile */
+
   &:hover ${HoveredImage} {
     opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    height: auto; /* Adjust height for mobile */
   }
 `
 
