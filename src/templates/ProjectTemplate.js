@@ -22,6 +22,13 @@ const ProjectCard = styled.div`
   overflow: hidden;
   margin-bottom: 100px;
   margin-top: 50px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `
 
 const TextSide = styled.div`
