@@ -39,23 +39,25 @@ const NotFoundPage = () => {
   `)
 
   return (
-    <Layout pageTitle="Sidan kunde inte hittas">
+    <Layout>
       <Main>
-        <Heading>Sidan kunde inte hittas</Heading>
+        <Heading>{data.contentful404FelSida.pagenotfound}</Heading>
         <Text>
-          {data.contentful404FelSida.pagenotfound}
-          <br />
-          {process.env.NODE_ENV === "development" && (
-            <>
-              <br />
-              Gå tillbaka till <LinkStyled to="/">startsidan</LinkStyled>.
-              <br />
-            </>
-          )}
+          Gå tillbaka till <LinkStyled to="/">startsidan</LinkStyled>.
         </Text>
       </Main>
     </Layout>
   )
 }
+
+export const Head = () => (
+  <>
+    <title>404 - Sidan kunde inte hittas</title>
+    <meta
+      name="description"
+      content="Sidan du försöker nå kunde inte hittas. Gå tillbaka till startsidan för att fortsätta."
+    />
+  </>
+)
 
 export default NotFoundPage

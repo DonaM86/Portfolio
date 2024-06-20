@@ -200,6 +200,16 @@ const ProjektPage = ({ data }) => {
   )
 }
 
+export const Head = () => (
+  <>
+    <title>Projects</title>
+    <meta
+      name="description"
+      content="Browse through my various projects categorized by different technologies and domains. Find out more about each project and see my work in action."
+    />
+  </>
+)
+
 export const query = graphql`
   query {
     allContentfulProjekt {

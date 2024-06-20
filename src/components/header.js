@@ -18,18 +18,17 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2rem; /* Added gap to create space between image and text */
 `
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   width: 100%;
   max-width: 50%;
 
   @media (max-width: 768px) {
-    align-items: flex-start;
     padding-left: 1rem;
   }
 `
@@ -46,7 +45,7 @@ const ContactButton = styled.button`
   border: none;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   outline: none;
-  margin-top: 2rem; /* Added margin to improve button placement */
+  margin-top: 2rem;
 
   &:hover {
     background-color: #d63603;
@@ -66,11 +65,11 @@ const Header = () => {
           id
           title
           subtitle
+          description {
+            description
+          }
           image {
             gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
-          }
-          description {
-            id
           }
         }
       }
@@ -85,8 +84,6 @@ const Header = () => {
       <Container>
         <FlexContainer>
           <div style={{ width: "180px" }}>
-            {" "}
-            {/* Adjusted width */}
             <GatsbyImage
               style={{ borderRadius: "50%" }}
               image={image}
@@ -98,8 +95,8 @@ const Header = () => {
               style={{
                 fontSize: "2.25rem",
                 lineHeight: "1.2",
-                fontWeight: "700",
-                color: "#1f2937",
+                fontWeight: "800" /* Made bolder */,
+                color: "#111827" /* Darker color */,
                 marginBottom: "1rem",
               }}
             >
@@ -109,12 +106,24 @@ const Header = () => {
               style={{
                 fontSize: "1.125rem",
                 lineHeight: "1.5",
-                color: "#374151",
-                marginBottom: "3rem",
+                fontWeight: "700" /* Made bolder */,
+                color: "#1f2937" /* Darker color */,
+                marginBottom: "1rem",
               }}
             >
               {introductionData.subtitle}
             </h2>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: "1.6",
+                fontWeight: "600" /* Made bolder */,
+                color: "#374151" /* Darker color */,
+                marginBottom: "3rem",
+              }}
+            >
+              {introductionData.description.description}
+            </p>
             <Link to="/contact" style={{ textDecoration: "none" }}>
               <ContactButton>Contact me here</ContactButton>
             </Link>

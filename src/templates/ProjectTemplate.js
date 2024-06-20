@@ -25,7 +25,7 @@ const ProjectCard = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    max-width: 90%; /* Adjusted for better mobile view */
+    max-width: 90%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -40,7 +40,7 @@ const TextSide = styled.div`
   padding-bottom: 5%;
 
   @media (max-width: 768px) {
-    padding: 20px; /* Adjusted padding for mobile */
+    padding: 20px;
   }
 `
 
@@ -55,7 +55,7 @@ const Title = styled.h2`
   margin-bottom: 15px;
 
   @media (max-width: 768px) {
-    font-size: 24px; /* Adjusted font size for mobile */
+    font-size: 24px;
   }
 `
 
@@ -63,7 +63,7 @@ const Description = styled.div`
   font-size: 20px;
 
   @media (max-width: 768px) {
-    font-size: 16px; /* Adjusted font size for mobile */
+    font-size: 16px;
   }
 `
 
@@ -71,10 +71,10 @@ const ImageSide = styled.div`
   flex: 2;
   position: relative;
   display: flex;
-  justify-content: center; /* Center image on mobile */
+  justify-content: center;
 
   @media (max-width: 768px) {
-    margin-top: 20px; /* Space between text and image on mobile */
+    margin-top: 20px;
   }
 `
 
@@ -86,7 +86,7 @@ const StyledImage = styled(GatsbyImage)`
   border-radius: 10px;
 
   @media (max-width: 768px) {
-    width: 100%; /* Full width on mobile */
+    width: 100%;
     height: auto;
   }
 `
@@ -102,7 +102,7 @@ const HoveredImage = styled(GatsbyImage)`
 
   @media (max-width: 768px) {
     height: auto;
-    width: 100%; /* Full width on mobile */
+    width: 100%;
   }
 `
 
@@ -112,14 +112,14 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 97%;
   display: flex;
-  justify-content: center; /* Center the image container on mobile */
+  justify-content: center;
 
   &:hover ${HoveredImage} {
     opacity: 1;
   }
 
   @media (max-width: 768px) {
-    height: auto; /* Adjust height for mobile */
+    height: auto;
   }
 `
 

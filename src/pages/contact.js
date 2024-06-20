@@ -59,6 +59,16 @@ const Contact = ({ data }) => {
   )
 }
 
+export const Head = () => (
+  <>
+    <title>Contact Me</title>
+    <meta
+      name="description"
+      content="Get in touch with me through email, GitHub, or LinkedIn. Learn more about my professional background and connect with me."
+    />
+  </>
+)
+
 export const query = graphql`
   query {
     allContentfulContact {

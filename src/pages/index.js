@@ -112,6 +112,16 @@ const IndexPage = ({ data }) => {
   )
 }
 
+export const Head = () => (
+  <>
+    <title>My Projects</title>
+    <meta
+      name="description"
+      content="Explore my projects and see the work I have done. View details of each project and find out more about my skills and experience."
+    />
+  </>
+)
+
 export const query = graphql`
   query {
     allContentfulProjekt {
