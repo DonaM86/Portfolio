@@ -1,3 +1,7 @@
+[build]
+  command = "CI= npm run build"
+  publish = "public"
+
 [[headers]]
   for = "/*.css"
   [headers.values]
