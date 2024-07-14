@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import "./reset.css" // Om du har en reset.css fil
 
 const HeaderWrapper = styled.header`
   background-color: #f3f4f6;
