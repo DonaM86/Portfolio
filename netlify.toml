@@ -1,27 +1,19 @@
-[build]
-  command = "npm install --force && npm run build"
-  publish = "public"
-
 [[headers]]
-  # Definiera cache policy för HTML-filer
-  for = "/*.html"
-    [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  # Definiera cache policy för CSS, JS och bilder
   for = "/*.css"
-    [headers.values]
+  [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
   for = "/*.js"
-    [headers.values]
+  [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
   for = "/*.jpg"
-    [headers.values]
+  [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
   for = "/*.png"
-    [headers.values]
+  [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
