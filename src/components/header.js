@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import "./reset.css" // Om du har en reset.css fil
 
 const HeaderWrapper = styled.header`
   background-color: #f3f4f6;
@@ -58,6 +59,12 @@ const ContactButton = styled.button`
 `
 
 const Header = () => {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
   const data = useStaticQuery(graphql`
     query {
       allContentfulIntroduction {
@@ -75,6 +82,10 @@ const Header = () => {
       }
     }
   `)
+
+  if (!isClient) {
+    return null
+  }
 
   const introductionData = data.allContentfulIntroduction.nodes[0]
   const image = getImage(introductionData.image)
